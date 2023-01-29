@@ -7,10 +7,10 @@ var today = dayjs();
 $("#currentDay").text(today.format("MMM D, YYYY, h:m A"));
 
 
-//add clear calendar button
+//add clear calendar button..because that seems like a thing we need
 $("#clear").click(function (event) {
   event.preventDefault;
-  
+
   $("textarea").val("");
   localStorage.clear();
 });
@@ -24,7 +24,7 @@ $(function () {
     var time = $(this).parent().attr("id").split("-")[1];
     var value = $(this).siblings(".description").val();
 
-    //set to local storage
+    //set entry to local storage
     localStorage.setItem(time, value);
   });
 

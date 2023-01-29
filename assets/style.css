@@ -1,7 +1,16 @@
-body {
+* {
   font-family: 'Open Sans', sans-serif;
+}
+
+body {
   font-size: 16px;
 }
+
+header {
+  text-align: center;
+
+}
+
 
 textarea {
   background: transparent;
@@ -9,12 +18,12 @@ textarea {
   resize: none;
   border-left: 1px solid #3B3B3B;
   padding: 10px;
-  
+
 }
 
 .description {
   white-space: pre-wrap;
-   
+
 }
 
 .time-block {
@@ -23,7 +32,7 @@ textarea {
 
 .row {
   border-top: 1px solid white;
-  
+
 }
 
 .hour {
@@ -34,18 +43,17 @@ textarea {
 
 .past {
   background-color: #d3d3d3;
-  
+
 }
 
 .present {
   background-color: #ff6961;
-  color: white;
-  font-weight: 700;
+
 }
 
 .future {
   background-color: #77dd77;
-  
+
 }
 
 .saveBtn {
@@ -71,6 +79,6 @@ textarea {
 
 .clear-button:hover {
   background-color: #3B3B3B;
-  color:white;
+  color: white;
   transition: all 0.1s ease-in-out;
 }
