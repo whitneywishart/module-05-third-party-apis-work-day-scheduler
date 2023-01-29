@@ -1,20 +1,44 @@
 //global variable for current time
 var now = dayjs().format("HH");
+var today = dayjs();
+
 
 //add current date at top of page
-var today = dayjs();
 $("#currentDay").text(today.format("MMM D, YYYY, h:m A"));
 
 
+//add clear calendar button
+$("#clear").click(function (event) {
+  event.preventDefault;
+  
+  $("textarea").val("");
+  localStorage.clear();
+});
+
+
 $(function () {
-  //add click event listener for save button and send entry value to local storage
+  //add listener for save buttons
   $(".saveBtn").click(function (event) {
     event.preventDefault();
-    var value = $(this).siblings(".description").val();
-    var time = $(this).parent().attr("id").split("-")[1];
-    localStorage.setItem(time, value);
 
-  })
+    var time = $(this).parent().attr("id").split("-")[1];
+    var value = $(this).siblings(".description").val();
+
+    //set to local storage
+    localStorage.setItem(time, value);
+  });
+
+
+  //get local storage and display on expected row
+  $("#hour-09 .description").val(localStorage.getItem("09"));
+  $("#hour-10 .description").val(localStorage.getItem("10"));
+  $("#hour-11 .description").val(localStorage.getItem("11"));
+  $("#hour-12 .description").val(localStorage.getItem("12"));
+  $("#hour-13 .description").val(localStorage.getItem("13"));
+  $("#hour-14 .description").val(localStorage.getItem("14"));
+  $("#hour-15 .description").val(localStorage.getItem("15"));
+  $("#hour-16 .description").val(localStorage.getItem("16"));
+  $("#hour-17 .description").val(localStorage.getItem("17"));
 
 
 
@@ -22,15 +46,11 @@ $(function () {
   $(".row").each(function () {
 
     var time = $(this).attr("id").split("-")[1];
-    // console.log(this);
-    // console.log(now);
-    // console.log(time);
-
 
     if (now == time) {
       $(this).removeClass("past");
       $(this).removeClass("future");
-      $(this).addClass("present");
+      $(this).children(".description").addClass("present");
 
 
     } else if (now < time) {
@@ -43,6 +63,4 @@ $(function () {
 
     }
   })
-
 });
-
